@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or site.description }}">
+  
+  <link rel="preload" href="/assets/fonts/Super-Sliced.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/assets/fonts/Eros-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="{{ bodyClass }}">
+  
+  <div id="custom-cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <main class="landing-page" id="landingPage">
+    <h1 class="landing-title" id="landingTitle">{{ title }}</h1>
+    <p class="landing-subtitle">{{ tagline }}</p>
+    <div class="instruction-text">hover over the title to begin</div>
+  </main>
+
+  <!-- Content that appears after landing -->
+  <div class="content-page" id="contentPage" style="display: none;">
+    <div class="page-header">
+      <h1 class="page-title">microplastic fragments</h1>
+      <p class="page-instruction">instruction 01: observe what cannot be observed</p>
+    </div>
+    
+    {{ content | safe }}
+    
+    <!-- Additional content since your content is empty -->
+    <section class="content-section reveal">
+      <h2>the invisible problem</h2>
+      
+      <p><strong>Every morning</strong>, someone near Battery Park drinks coffee from a plastic cup. <span class="emphasis">15,000 microplastic particles</span> are released into that single cup.</p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="/assets/images/2.jpeg" alt="Coffee by East River">
+          <div class="image-caption">morning ritual: your daily cup by the river</div>
+        </div>
+        
+        <div class="image-card">
+          <img src="/assets/images/3.jpeg" alt="Water sample">
+          <div class="image-caption">magnified 1000x: what floats unseen in every liter</div>
+        </div>
+      </div>
+
+      <p>The East River carries <span class="data-number">556,484</span> particles per square kilometer. Most are invisible to the naked eye, drifting like thoughts through water that remembers everything.</p>
+    </section>
+
+    <div class="instruction-card">
+      <div class="instruction-number">02</div>
+      <div class="instruction-content">
+        imagine each plastic fragment as a message<br>
+        what would the river say back to you?
+      </div>
+    </div>
+
+    <section class="content-section reveal">
+      <h2>the journey of particles</h2>
+
+      <img src="/assets/images/4.jpeg" alt="Scientific equipment" class="image-minimal">
+
+      <p>Scientists at Battery Park Marina collect water samples daily. Advanced spectrometry reveals the microscopic debris floating past joggers, tourists, and morning commuters.</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
+        <div class="data-minimal">165 million particles in NY Harbor</div>
+        <div class="data-minimal">85% are microplastics</div>
+        <div class="data-minimal">200+ years to decompose</div>
+      </div>
+
+      <p>Each fragment travels downstream, entering the food chain through fish, accumulating in salt, and returning to our tables in ways we're only beginning to understand.</p>
+    </section>
+
+    <div class="instruction-card">
+      <div class="instruction-number">03</div>
+      <div class="instruction-content">
+        hold a cup of water<br>
+        now imagine it holding you back
+      </div>
+    </div>
+
+    <section class="content-section reveal">
+      <h2>what you can do</h2>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="/assets/images/5.jpeg" alt="Pollution evidence">
+          <div class="image-caption">visible pollution breaks into invisible fragments</div>
+        </div>
+        
+        <div class="image-card">
+          <img src="/assets/images/6.jpeg" alt="Marine research">
+          <div class="image-caption">marine life accumulates 8.2x baseline levels</div>
+        </div>
+        
+        <div class="image-card">
+          <img src="/assets/images/7.jpeg" alt="Clean future">
+          <div class="image-caption">a future with 90% fewer particles is possible</div>
+        </div>
+      </div>
+
+      <h3>simple actions</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin: 1rem 0; font-size: 1.2rem;">🚫 <strong>refuse</strong> single-use plastics when possible</li>
+        <li style="margin: 1rem 0; font-size: 1.2rem;">♻️ <strong>choose</strong> reusable cups and bottles</li>
+        <li style="margin: 1rem 0; font-size: 1.2rem;">🧹 <strong>join</strong> cleanup efforts at Battery Park</li>
+        <li style="margin: 1rem 0; font-size: 1.2rem;">📢 <strong>share</strong> this knowledge with others</li>
+      </ul>
+
+      <p>The water remembers everything we give it. Every choice creates ripples that travel far beyond what we can see.</p>
+    </section>
+
+    <div class="instruction-card">
+      <div class="instruction-number">04</div>
+      <div class="instruction-content">
+        look at the East River<br>
+        see it looking back at you<br>
+        make a promise
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin: 4rem 0; padding: 2rem;">
+      <button class="nav-button" onclick="resetToLanding()">begin again</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const landingTitle = document.getElementById('landingTitle');
+      const landingPage = document.getElementById('landingPage');
+      const contentPage = document.getElementById('contentPage');
+      let isDissolving = false;
+
+      // Cursor tracking
+      let mouseX = 0, mouseY = 0;
+      const cursor = document.getElementById('custom-cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function updateCursor() {
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+        requestAnimationFrame(updateCursor);
+      }
+      updateCursor();
+
+      // Title hover effect - MUCH SLOWER
+      landingTitle.addEventListener('mouseenter', () => {
+        if (isDissolving) return;
+        document.body.setAttribute('data-cursor', 'dissolve');
+        
+        // Add a slight delay before starting
+        setTimeout(startDissolve, 500);
+      });
+
+      // Reset if mouse leaves quickly
+      landingTitle.addEventListener('mouseleave', () => {
+        if (!isDissolving) {
+          document.body.removeAttribute('data-cursor');
+        }
+      });
+
+      function startDissolve() {
+        if (isDissolving) return;
+        isDissolving = true;
+
+        console.log('Starting dissolve animation...');
+
+        // Create particles from title - SLOWER
+        const titleRect = landingTitle.getBoundingClientRect();
+        const particleCount = 60;
+
+        for (let i = 0; i < particleCount; i++) {
+          setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.className = 'particle dissolving';
+            
+            const x = titleRect.left + Math.random() * titleRect.width;
+            const y = titleRect.top + Math.random() * titleRect.height;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            // Vary particle sizes and colors
+            const size = 3 + Math.random() * 6;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            if (Math.random() > 0.6) {
+              particle.style.background = 'var(--off-white)';
+            }
+            
+            landingPage.appendChild(particle);
+            
+            setTimeout(() => {
+              if (particle.parentNode) {
+                particle.remove();
+              }
+            }, 4000);
+          }, i * 50); // Much slower particle creation
+        }
+
+        // SLOWER fade out title and page
+        setTimeout(() => {
+          console.log('Fading out title...');
+          landingTitle.style.opacity = '0';
+          landingTitle.style.transform = 'scale(0.8)';
+        }, 1000);
+
+        setTimeout(() => {
+          console.log('Hiding landing page...');
+          landingPage.style.transition = 'opacity 1s ease-out';
+          landingPage.style.opacity = '0';
+        }, 2500);
+
+        // Show content page - MUCH SLOWER
+        setTimeout(() => {
+          console.log('Showing content page...');
+          landingPage.style.display = 'none';
+          contentPage.style.display = 'block';
+          contentPage.style.opacity = '0';
+          
+          // Fade in content
+          setTimeout(() => {
+            contentPage.style.transition = 'opacity 1s ease-in';
+            contentPage.style.opacity = '1';
+            
+            // Trigger reveal animations
+            setTimeout(() => {
+              document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('in-view');
+              });
+            }, 500);
+          }, 100);
+        }, 3500);
+      }
+
+      // Reset function
+      window.resetToLanding = function() {
+        contentPage.style.display = 'none';
+        landingPage.style.display = 'flex';
+        landingPage.style.opacity = '1';
+        landingTitle.style.opacity = '1';
+        landingTitle.style.transform = 'scale(1)';
+        isDissolving = false;
+        document.body.removeAttribute('data-cursor');
+        
+        // Reset reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+          el.classList.remove('in-view');
+        });
+      };
+
+      // Hover states for content
+      const hoverElements = document.querySelectorAll('.data-minimal, .image-card, .instruction-card, .nav-button');
+      
+      hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          document.body.setAttribute('data-cursor', 'hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+          document.body.removeAttribute('data-cursor');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

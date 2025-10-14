@@ -1,0 +1,16 @@
+{
+  "title": "East River Fragments",
+  "description": "An interactive, poetic journey through visible and invisible microplastics near Battery Park",
+  "url": "https://east-river-fragments.netlify.app",
+  "author": "Environmental Awareness Project",
+  "particles": {
+    "harbor_total": 165000000,
+    "east_river_concentration": 556484,
+    "microplastic_percentage": 85
+  },
+  "pollution_facts": {
+    "decomposition_time": 200,
+    "temperature_threshold": 70,
+    "toxic_compound": "Styrene (C8H8)"
+  }
+}
