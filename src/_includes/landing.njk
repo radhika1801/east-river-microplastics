@@ -12,6 +12,19 @@
 </head>
 <body class="{{ bodyClass }}">
   
+  <!-- Add microplastic particles container -->
+<div class="microplastics"></div>
+
+<!-- Add cyber stars (soft glowing dots for ambient effect) -->
+<div class="cyber-stars"></div>
+
+<!-- Optional glowing aura elements -->
+<div class="custom-cursor"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-aura"></div>
+<div class="energy-field"></div>
+
+
   <div id="custom-cursor">
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
@@ -243,6 +256,83 @@
           }, 100);
         }, 3500);
       }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Create microplastic particles
+  const microplasticsContainer = document.querySelector('.microplastics');
+  for (let i = 0; i < 100; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('microplastic');
+    // Randomly choose shape class between circle and shard
+    particle.classList.add(Math.random() > 0.5 ? 'circle' : 'shard');
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+    microplasticsContainer.appendChild(particle);
+
+    // Animate floating effect using GSAP or basic loop:
+    gsap.to(particle, {
+      y: `+=${Math.random() * 100 + 50}`,
+      x: `+=${Math.random() * 50 - 25}`,
+      rotation: Math.random() * 360,
+      duration: 10 + Math.random() * 15,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+      delay: Math.random() * 5,
+    });
+
+    particle.addEventListener('mouseenter', () => {
+      gsap.to(particle, { scale: 2, opacity: 1, duration: 0.3 });
+    });
+    particle.addEventListener('mouseleave', () => {
+      gsap.to(particle, { scale: 1, opacity: 0.6, duration: 0.3 });
+    });
+  }
+
+  // Create cyber stars ambient glow
+  const cyberStarsContainer = document.querySelector('.cyber-stars');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.classList.add('cyber-star');
+    star.style.left = (Math.random() * 100) + '%';
+    star.style.top = (Math.random() * 100) + '%';
+    star.style.animationDelay = (Math.random() * 3) + 's';
+    cyberStarsContainer.appendChild(star);
+  }
+
+  // Cursor elements follow mouse
+  const cursor = document.querySelector('.custom-cursor');
+  const trail = document.querySelector('.cursor-trail');
+  const aura = document.querySelector('.cursor-aura');
+  const energyField = document.querySelector('.energy-field');
+  let mouseX = 0, mouseY = 0;
+  let trailX = 0, trailY = 0;
+  let auraX = 0, auraY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    gsap.to(cursor, { x: mouseX - 5, y: mouseY - 5, duration: 0.1 });
+    gsap.to(energyField, { x: mouseX - 150, y: mouseY - 150, opacity: 0.5, duration: 0.3 });
+  });
+
+  function updateTrail() {
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+    auraX += (mouseX - auraX) * 0.1;
+    auraY += (mouseY - auraY) * 0.1;
+
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
+    aura.style.left = auraX + 'px';
+    aura.style.top = auraY + 'px';
+
+    requestAnimationFrame(updateTrail);
+  }
+  updateTrail();
+});
 
       // Reset function
       window.resetToLanding = function() {
