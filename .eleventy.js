@@ -22,7 +22,7 @@ module.exports = function(eleventyConfig) {
 
   // create a filter for our url prefix 
   eleventyConfig.addFilter("prefixedUrl", (url, prefix) => {
-    const finalPrefix = prefix || (isProduction ? "east-river-microplastics/" : "/");
+    const finalPrefix = prefix || (isProduction ? "/east-river-microplastics/" : "/");
     return finalPrefix + url.replace(/^\/+/, "");
   });
 
