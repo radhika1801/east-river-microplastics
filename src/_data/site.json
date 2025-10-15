@@ -1,8 +1,6 @@
 {
   "title": "East River Fragments",
   "description": "An interactive, poetic journey through visible and invisible microplastics near Battery Park",
-  "url": "https://east-river-fragments.netlify.app",
-  "author": "Environmental Awareness Project",
   "particles": {
     "harbor_total": 165000000,
     "east_river_concentration": 556484,
