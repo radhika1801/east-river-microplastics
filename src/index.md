@@ -14,12 +14,12 @@ bodyClass: landing
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
   <div style="position: relative;">
-    <img src="/assets/images/2.jpeg" alt="Coffee by East River" style="width: 100%; height: 200px; object-fit: cover;">
+    <img src="{{'/assets/images/2.jpeg' | prefixedUrl }}" alt="Coffee by East River" style="width: 100%; height: 200px; object-fit: cover;">
     <div style="text-align: center; margin-top: 1rem; font-style: italic;">morning ritual by the river</div>
   </div>
   
   <div style="position: relative;">
-    <img src="/assets/images/3.jpeg" alt="Water sample" style="width: 100%; height: 200px; object-fit: cover;">
+    <img src="{{'/assets/images/3.jpeg' | prefixedUrl }}" alt="Water sample" style="width: 100%; height: 200px; object-fit: cover;">
     <div style="text-align: center; margin-top: 1rem; font-style: italic;">magnified 1000x: invisible particles</div>
   </div>
 </div>

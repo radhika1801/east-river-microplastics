@@ -1,7 +1,7 @@
 /* Enhanced Font Imports */
 @font-face {
   font-family: 'Eros';
-  src: url('/assets/fonts/Eros-Regular.ttf') format('truetype');
+  src: url "{{ '/assets/fonts/Eros-Regular.ttf' | prefixedUrl }}"format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Super-Sliced';
-  src: url('/assets/fonts/Super-Sliced.ttf') format('truetype');
+  src: url "{{ '/assets/fonts/Super-Sliced.ttf' | prefixedUrl }}" format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
