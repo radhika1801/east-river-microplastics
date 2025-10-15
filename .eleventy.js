@@ -14,6 +14,18 @@ module.exports = function(eleventyConfig) {
     </div>`;
   });
 
+  // create a variable for our dev environment; production = gh-pages, nothing = local by default
+  const isProduction = process.env.ELEVENTY_ENV === "production";
+
+  // Global variable for our path prefix, remember to insert your repo name
+  eleventyConfig.addGlobalData("pathPrefix", isProduction ? "/east-river-microplastics/" : "/");
+
+  // create a filter for our url prefix 
+  eleventyConfig.addFilter("prefixedUrl", (url, prefix) => {
+    const finalPrefix = prefix || (isProduction ? "/east-river-microplastics/" : "/");
+    return finalPrefix + url.replace(/^\/+/, "");
+  });
+
   // Section wrappers
   eleventyConfig.addPairedShortcode("section", function(content, className = "", id = "") {
     return `<section class="enhanced-section ${className}" ${id ? `id="${id}"` : ''} data-scroll-section>

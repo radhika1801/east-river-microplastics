@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>{{ title or site.title }}</title>
+  <title>east river fragments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="{{ description or site.description }}" />
+  <meta name="description" content="An interactive, poetic journey through visible and invisible microplastics near Battery Park" />
   
-  <link rel="preload" href="{{ 'assets/fonts/Super-Sliced.ttf' | prefixedUrl }}" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="{{ 'assets/fonts/Eros-Regular.ttf' | prefixedUrl }}" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="{{ 'styles/styles.css' | prefixedUrl }}">
+  <link rel="preload" href="/assets/fonts/Super-Sliced.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/assets/fonts/Eros-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="/east-river-microplastics/styles/styles.css">
 </head>
 
-<body class="{{ bodyClass }}">
+<body class="landing">
   <div id="ascii-dots-bg"></div>
   <div class="microplastics"></div>
   <div class="ripple-cursor-container"></div>
@@ -23,7 +23,7 @@
   <!-- Landing page interactive header -->
   <main class="landing-page" id="landingPage" role="main" tabindex="0" aria-label="Site landing page">
     <h1 class="landing-title" id="landingTitle" style="cursor:pointer;">
-      {{ title }}
+      east river fragments
     </h1>
     <p class="landing-subtitle">tracing invisible microplastics, one particle at a time</p>
     <p class="instruction-text">hover over the title to explore</p>
@@ -45,7 +45,23 @@
       <p class="page-instruction">instruction 1: observe what cannot be observed</p>
     </div>
 
-    {{ content | safe }}
+    <!-- This content will show after the landing dissolves -->
+<section class="content-section" style="display: none;" id="contentSection">
+<h2>the invisible problem</h2>
+<p><strong>Every morning</strong>, someone near Battery Park drinks coffee from a plastic cup. 15,000 microplastic particles are released into that single cup.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+  <div style="position: relative;">
+    <img src="/assets/images/2.jpeg" alt="Coffee by East River" style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="text-align: center; margin-top: 1rem; font-style: italic;">morning ritual by the river</div>
+  </div>
+  <div style="position: relative;">
+    <img src="/assets/images/3.jpeg" alt="Water sample" style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="text-align: center; margin-top: 1rem; font-style: italic;">magnified 1000x: invisible particles</div>
+  </div>
+</div>
+<p>The East River carries <strong>556,484 particles</strong> per square kilometer. Most are invisible to the naked eye, drifting like thoughts through water that remembers everything.</p>
+</section>
+
 
     <!-- Detailed content and images -->
     <section class="content-section reveal">
