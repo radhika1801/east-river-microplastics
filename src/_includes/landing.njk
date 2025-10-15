@@ -8,22 +8,13 @@
   
   <link rel="preload" href="/assets/fonts/Super-Sliced.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="/assets/fonts/Eros-Regular.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="{{ 'styles/styles.css' | prefixedUrl }}">
 </head>
 
 <body class="{{ bodyClass }}">
-
-  <!-- Animated ASCII dots background -->
   <div id="ascii-dots-bg"></div>
-  
-
-  <!-- Microplastic floating particles -->
   <div class="microplastics"></div>
-
-  <!-- Ripple cursor effect container -->
   <div class="ripple-cursor-container"></div>
-
-  <!-- Custom cursor dots -->
   <div id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
@@ -38,10 +29,8 @@
     <p class="instruction-text">hover over the title to explore</p>
   </main>
 
-  <!-- Content page, hidden initially, revealed after dissolve -->
-  <div class="content-page" id="contentPage" style="display:none;" aria-hidden="true">
 
-    <!-- Poem in the middle with accent -->
+  <div class="content-page" id="contentPage" style="display:none;" aria-hidden="true">
     <section class="poem-section reveal" style="margin: 5rem auto; max-width: 700px; font-style: italic; font-family: 'Eros', Georgia, serif; color: var(--off-white); text-align: center;">
       <p>
         <strong style="color: var(--accent);">Go outside.</strong> Stand still.<br/>

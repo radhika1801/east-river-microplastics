@@ -1,27 +1,18 @@
 {
   "name": "east-river-microplastics",
   "version": "1.0.0",
-  "description": "Interactive poetic microplastic awareness site for East River near Battery Park",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "npx @11ty/eleventy --serve --watch",
-    "build": "npx @11ty/eleventy",
-    "clean": "rm -rf public",
-    "dev": "npm run clean && npm run start",
-    "preview": "npm run build && npx http-server public"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf docs",
+    "build": "npm run clean && ELEVENTY_ENV=production npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2"
-  },
-  "keywords": [
-    "microplastics",
-    "environmental",
-    "awareness",
-    "east-river",
-    "battery-park",
-    "interactive",
-    "11ty",
-    "eleventy"
-  ],
-  "author": "Environmental Awareness Project",
-  "license": "MIT"
+  }
 }
